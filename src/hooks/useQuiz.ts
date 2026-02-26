@@ -78,12 +78,8 @@ export function generateChoices(question: Question): number[] {
     attempts++;
   }
 
-  // Shuffle using Fisher-Yates
-  for (let i = choices.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [choices[i], choices[j]] = [choices[j], choices[i]];
-  }
-  return choices;
+  // Sort ascending so smallest is at the top
+  return choices.sort((a, b) => a - b);
 }
 
 export function useQuiz() {
