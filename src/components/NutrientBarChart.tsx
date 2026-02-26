@@ -14,24 +14,26 @@ interface Props {
 }
 
 export function NutrientBarChart({ title, unit, items }: Props) {
-  const maxVal = Math.max(...items.map((item) => item.value));
+  const sorted = [...items].sort((a, b) => b.value - a.value);
+  const maxVal = Math.max(...sorted.map((item) => item.value));
 
   return (
     <div className="animate-fade-in mt-4 rounded-xl bg-white p-4 shadow-sm">
       <p className="mb-3 text-sm font-bold text-gray-600">{title}</p>
       <div className="space-y-2.5">
-        {items.map((item, i) => {
+        {sorted.map((item, i) => {
           const isAnimal = item.type === 'animal';
           const barColor = isAnimal ? 'bg-secondary' : 'bg-primary';
           const trackColor = isAnimal ? 'bg-orange-100' : 'bg-green-100';
           const textColor = isAnimal ? 'text-secondary' : 'text-primary';
           const widthPct = maxVal > 0 ? (item.value / maxVal) * 100 : 0;
+          const displayValue = Math.round(item.value * 10) / 10;
           return (
             <div key={i}>
               <div className="mb-0.5 flex items-center justify-between text-xs">
                 <span className={`font-medium ${textColor}`}>{item.name}</span>
                 <span className={`tabular-nums font-bold ${textColor}`}>
-                  {item.value}
+                  {displayValue}
                   {unit}
                 </span>
               </div>
