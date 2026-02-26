@@ -1,6 +1,6 @@
 import type { Translations } from '../i18n/types';
 import type { Language, AnswerRecord } from '../types/quiz';
-import { ComparisonBar } from './ComparisonBar';
+import { NutrientBarChart } from './NutrientBarChart';
 import { DailyReferenceCard } from './DailyReferenceCard';
 
 interface Props {
@@ -73,33 +73,30 @@ export function ResultScreen({ t, lang, record, correctAnswer, onNext }: Props) 
           {question.comment[lang]}
         </div>
 
-        {/* Comparison bar (not for sheets/knowledge) */}
-        {question.answer_type !== 'sheets' && (
-          <ComparisonBar
-            animalName={question.animal_food[lang]}
-            animalAmount={question.animal_food.amount_g}
-            plantName={question.plant_food[lang]}
-            plantAmount={correctAnswer}
-            unit="g"
-            lang={lang}
-          />
-        )}
-
-        {/* Alternative plant foods */}
-        {'alternatives' in question && question.alternatives && question.alternatives.length > 0 && (
-          <div className="mt-4 rounded-xl bg-white p-4 shadow-sm">
-            <p className="mb-2 text-sm font-bold text-gray-600">{t.result.alternativesTitle}</p>
-            <ul className="space-y-1">
-              {question.alternatives.map((alt, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                  <span className="text-primary">&#8226;</span>
-                  <span>{alt.name[lang]}</span>
-                  <span className="ml-auto font-semibold tabular-nums">{alt.amount[lang]}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {/* Nutrient per 100g bar chart (not for sheets/knowledge) */}
+        {question.answer_type !== 'sheets' && (() => {
+          const animalPer100g =
+            (question.animal_food.nutrient_value / question.animal_food.amount_g) * 100;
+          const items = [
+            { name: question.animal_food[lang], value: animalPer100g, type: 'animal' as const },
+            { name: question.plant_food[lang], value: question.plant_food.nutrient_per_100g, type: 'plant' as const },
+            ...('alternatives' in question && question.alternatives
+              ? question.alternatives.map((alt) => ({
+                  name: alt.name[lang],
+                  value: alt.nutrient_per_100g,
+                  type: 'plant' as const,
+                }))
+              : []),
+          ];
+          return (
+            <NutrientBarChart
+              title={t.result.alternativesTitle}
+              unit={question.plant_food.nutrient_unit}
+              items={items}
+              lang={lang}
+            />
+          );
+        })()}
 
         {/* Daily reference */}
         <DailyReferenceCard t={t} lang={lang} category={question.category} />

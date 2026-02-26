@@ -18,7 +18,7 @@ export const en: Translations = {
     correct: 'Correct!',
     incorrect: 'The answer was {answer}',
     answerLabel: 'Answer',
-    alternativesTitle: 'With other plant foods?',
+    alternativesTitle: 'Content per 100g',
   },
   knowledge: {
     yes: 'Yes',

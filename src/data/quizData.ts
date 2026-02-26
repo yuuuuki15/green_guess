@@ -42,8 +42,8 @@ export const quizData: QuizData = {
         en: 'About 141g — roughly 3 packs of natto (1 pack ≈ 45g). Just 2 packs at breakfast covers nearly 70% of chicken breast protein.',
       },
       alternatives: [
-        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, amount: { ja: '約333g', en: '~333g' } },
-        { name: { ja: '枝豆（ゆで）', en: 'Edamame (boiled)' }, amount: { ja: '約203g', en: '~203g' } },
+        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, nutrient_per_100g: 7.0 },
+        { name: { ja: '枝豆（ゆで）', en: 'Edamame (boiled)' }, nutrient_per_100g: 11.5 },
       ],
     },
     {
@@ -75,8 +75,8 @@ export const quizData: QuizData = {
         en: "About 144g — less than you'd think! Cooked soybeans pack 14.8g of protein per 100g.",
       },
       alternatives: [
-        { name: { ja: '納豆', en: 'Natto' }, amount: { ja: '約129g', en: '~129g' } },
-        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, amount: { ja: '約304g', en: '~304g' } },
+        { name: { ja: '納豆', en: 'Natto' }, nutrient_per_100g: 16.5 },
+        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, nutrient_per_100g: 7.0 },
       ],
     },
     {
@@ -108,8 +108,8 @@ export const quizData: QuizData = {
         en: 'About 96g — almost the same weight! Komatsuna has 2.8mg iron per 100g, nearly matching beef.',
       },
       alternatives: [
-        { name: { ja: '納豆', en: 'Natto' }, amount: { ja: '約82g', en: '~82g' } },
-        { name: { ja: 'ほうれん草（生）', en: 'Spinach (raw)' }, amount: { ja: '約135g', en: '~135g' } },
+        { name: { ja: '納豆', en: 'Natto' }, nutrient_per_100g: 3.3 },
+        { name: { ja: 'ほうれん草（生）', en: 'Spinach (raw)' }, nutrient_per_100g: 2.0 },
       ],
     },
     {
@@ -141,8 +141,8 @@ export const quizData: QuizData = {
         en: "About 867g — liver is extremely iron-rich, so tofu alone is tough. But combining multiple plant foods like komatsuna, sesame, and hijiki seaweed makes it achievable.",
       },
       alternatives: [
-        { name: { ja: '小松菜', en: 'Komatsuna' }, amount: { ja: '約464g', en: '~464g' } },
-        { name: { ja: '納豆', en: 'Natto' }, amount: { ja: '約394g', en: '~394g' } },
+        { name: { ja: '小松菜', en: 'Komatsuna' }, nutrient_per_100g: 2.8 },
+        { name: { ja: '納豆', en: 'Natto' }, nutrient_per_100g: 3.3 },
       ],
     },
     {
@@ -174,7 +174,7 @@ export const quizData: QuizData = {
         en: 'About 129g — komatsuna is a calcium powerhouse! It actually contains more calcium per 100g than milk.',
       },
       alternatives: [
-        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, amount: { ja: '約237g', en: '~237g' } },
+        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, nutrient_per_100g: 93 },
       ],
     },
     {
@@ -206,7 +206,7 @@ export const quizData: QuizData = {
         en: "About 237g — less than one standard block of tofu. A single serving of mapo tofu gives you as much calcium as a glass of milk.",
       },
       alternatives: [
-        { name: { ja: '小松菜', en: 'Komatsuna' }, amount: { ja: '約129g', en: '~129g' } },
+        { name: { ja: '小松菜', en: 'Komatsuna' }, nutrient_per_100g: 170 },
       ],
     },
     {

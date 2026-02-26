@@ -29,7 +29,7 @@ export interface PlantFood {
 
 export interface AlternativeFood {
   name: LocalizedText;
-  amount: LocalizedText;
+  nutrient_per_100g: number;
 }
 
 export interface SliderQuestion {

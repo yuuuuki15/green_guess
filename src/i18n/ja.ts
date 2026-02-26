@@ -18,7 +18,7 @@ export const ja: Translations = {
     correct: '正解！',
     incorrect: '正解は {answer} でした',
     answerLabel: '正解',
-    alternativesTitle: '他の植物性食品では？',
+    alternativesTitle: '100gあたりの含有量',
   },
   knowledge: {
     yes: 'はい',

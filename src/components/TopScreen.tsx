@@ -28,6 +28,17 @@ export function TopScreen({ t, lang, onStart }: Props) {
       <p className="mt-12 max-w-sm text-center text-xs text-gray-400">
         {quizData.meta.sources[lang]}
       </p>
+      <p className="mt-3 text-center text-xs text-gray-400">
+        Made by{' '}
+        <a
+          href="https://github.com/yuuuuki15"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary underline hover:text-primary-dark"
+        >
+          @yuuuuki15
+        </a>
+      </p>
     </div>
   );
 }
