@@ -1,7 +1,7 @@
 import type { Translations } from '../i18n/types';
 import type { Language, AnswerRecord } from '../types/quiz';
-import { quizData } from '../data/quizData';
 import { ComparisonBar } from './ComparisonBar';
+import { DailyReferenceCard } from './DailyReferenceCard';
 
 interface Props {
   t: Translations;
@@ -95,34 +95,6 @@ export function ResultScreen({ t, lang, record, correctAnswer, onNext }: Props) 
       >
         {t.quiz.nextButton}
       </button>
-    </div>
-  );
-}
-
-function DailyReferenceCard({
-  t,
-  lang,
-  category,
-}: {
-  t: Translations;
-  lang: Language;
-  category: string;
-}) {
-  const ref = quizData.daily_reference[category];
-  if (!ref) return null;
-
-  return (
-    <div className="mt-4 rounded-xl border border-gray-200 bg-gray-50 p-4">
-      <p className="mb-2 text-xs font-bold text-gray-500 uppercase tracking-wide">
-        {t.reference.title}
-      </p>
-      <p className="text-sm text-gray-700">
-        {ref.nutrient[lang]}:{' '}
-        <span className="font-semibold">{t.reference.male} {ref.male}</span>
-        {' / '}
-        <span className="font-semibold">{t.reference.female} {ref.female[lang]}</span>
-      </p>
-      <p className="mt-1 text-[10px] text-gray-400">{t.reference.source}</p>
     </div>
   );
 }

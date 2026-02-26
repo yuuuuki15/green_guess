@@ -3,6 +3,7 @@ import type { Translations } from '../i18n/types';
 import type { Language, Question } from '../types/quiz';
 import { generateChoices } from '../hooks/useQuiz';
 import { ProgressBar } from './ProgressBar';
+import { DailyReferenceCard } from './DailyReferenceCard';
 
 interface Props {
   t: Translations;
@@ -76,9 +77,11 @@ function ChoiceQuizScreen({
         categoryLabel={categoryLabel}
       />
 
-      <div className="mb-6 rounded-2xl bg-white p-5 shadow-sm">
+      <div className="mb-4 rounded-2xl bg-white p-5 shadow-sm">
         <p className="text-lg leading-relaxed font-medium">{question.question[lang]}</p>
       </div>
+
+      <DailyReferenceCard t={t} lang={lang} category={question.category} compact />
 
       <div className="flex flex-1 flex-col justify-center gap-3">
         {choices.map((value) => (
@@ -113,9 +116,11 @@ function KnowledgeScreen({
         categoryLabel={categoryLabel}
       />
 
-      <div className="mb-6 rounded-2xl bg-white p-5 shadow-sm">
+      <div className="mb-4 rounded-2xl bg-white p-5 shadow-sm">
         <p className="text-lg leading-relaxed font-medium">{question.question[lang]}</p>
       </div>
+
+      <DailyReferenceCard t={t} lang={lang} category={question.category} compact />
 
       <div className="flex flex-1 flex-col justify-center gap-3">
         {(['yes', 'no', 'notSure'] as const).map((key) => (

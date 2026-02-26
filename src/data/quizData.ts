@@ -224,8 +224,8 @@ export const quizData: QuizData = {
       category: 'vitamin_b12',
       difficulty: 'hard',
       question: {
-        ja: 'ビタミンB12の1日の推奨量は2.4μg。これは植物性食品だけで摂れると思う？',
-        en: 'The daily recommended intake of vitamin B12 is 2.4μg. Do you think you can get this from plant foods alone?',
+        ja: 'ビタミンB12の1日の目安量は4.0μg（2025年版）。これは植物性食品だけで摂れると思う？',
+        en: 'The daily adequate intake of vitamin B12 is 4.0μg (2025 edition). Do you think you can get this from plant foods alone?',
       },
       answer_type: 'special_knowledge',
       slider_range: null,
