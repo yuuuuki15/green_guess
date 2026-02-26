@@ -18,8 +18,8 @@ export const quizData: QuizData = {
       category: 'protein',
       difficulty: 'easy',
       question: {
-        ja: '鶏むね肉（皮なし）100gのタンパク質は23.3g。同じ量のタンパク質を木綿豆腐で摂るには何g必要？',
-        en: 'Chicken breast (skinless) has 23.3g protein per 100g. How many grams of firm tofu do you need for the same amount?',
+        ja: '鶏むね肉（皮なし）100gのタンパク質は23.3g。同じ量のタンパク質を納豆で摂るには何g必要？',
+        en: 'Chicken breast (skinless) has 23.3g protein per 100g. How many grams of natto do you need for the same amount?',
       },
       animal_food: {
         ja: '鶏むね肉（皮なし）',
@@ -29,18 +29,22 @@ export const quizData: QuizData = {
         nutrient_unit: 'g',
       },
       plant_food: {
-        ja: '木綿豆腐',
-        en: 'Firm tofu (Momen-dofu)',
-        nutrient_per_100g: 7.0,
+        ja: '納豆（糸引き）',
+        en: 'Natto (fermented soybeans)',
+        nutrient_per_100g: 16.5,
         nutrient_unit: 'g',
       },
-      answer_g: 333,
-      slider_range: { min: 50, max: 800, step: 10 },
-      tolerance: 30,
+      answer_g: 141,
+      slider_range: { min: 50, max: 400, step: 10 },
+      tolerance: 15,
       comment: {
-        ja: '約333g — 木綿豆腐1丁（300g）でほぼ同じ！お味噌汁の豆腐を多めにするだけでもかなり摂れます。',
-        en: 'About 333g — roughly one block of firm tofu! Adding extra tofu to your miso soup goes a long way.',
+        ja: '約141g — 納豆約3パック分（1パック≒45g）。朝食に納豆を2パック食べるだけでも、鶏むね肉の7割近いタンパク質が摂れます。',
+        en: 'About 141g — roughly 3 packs of natto (1 pack ≈ 45g). Just 2 packs at breakfast covers nearly 70% of chicken breast protein.',
       },
+      alternatives: [
+        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, amount: { ja: '約333g', en: '~333g' } },
+        { name: { ja: '枝豆（ゆで）', en: 'Edamame (boiled)' }, amount: { ja: '約203g', en: '~203g' } },
+      ],
     },
     {
       id: 'q2',
@@ -70,6 +74,10 @@ export const quizData: QuizData = {
         ja: '約144g — 意外と少ない！茹で大豆は100gあたり14.8gものタンパク質を含んでいます。',
         en: "About 144g — less than you'd think! Cooked soybeans pack 14.8g of protein per 100g.",
       },
+      alternatives: [
+        { name: { ja: '納豆', en: 'Natto' }, amount: { ja: '約129g', en: '~129g' } },
+        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, amount: { ja: '約304g', en: '~304g' } },
+      ],
     },
     {
       id: 'q3',
@@ -99,6 +107,10 @@ export const quizData: QuizData = {
         ja: '約96g — ほぼ同じ重さ！小松菜は100gあたり2.8mgの鉄分を含み、牛肉とほぼ同等です。',
         en: 'About 96g — almost the same weight! Komatsuna has 2.8mg iron per 100g, nearly matching beef.',
       },
+      alternatives: [
+        { name: { ja: '納豆', en: 'Natto' }, amount: { ja: '約82g', en: '~82g' } },
+        { name: { ja: 'ほうれん草（生）', en: 'Spinach (raw)' }, amount: { ja: '約135g', en: '~135g' } },
+      ],
     },
     {
       id: 'q4',
@@ -128,6 +140,10 @@ export const quizData: QuizData = {
         ja: '約867g — レバーの鉄分はかなり多いので、豆腐だけで同じ量を摂るのは大変。でも小松菜やひじきなど、複数の植物性食品を組み合わせれば十分カバーできます。',
         en: "About 867g — liver is extremely iron-rich, so tofu alone is tough. But combining multiple plant foods like komatsuna, sesame, and hijiki seaweed makes it achievable.",
       },
+      alternatives: [
+        { name: { ja: '小松菜', en: 'Komatsuna' }, amount: { ja: '約464g', en: '~464g' } },
+        { name: { ja: '納豆', en: 'Natto' }, amount: { ja: '約394g', en: '~394g' } },
+      ],
     },
     {
       id: 'q5',
@@ -157,6 +173,9 @@ export const quizData: QuizData = {
         ja: '約129g — 小松菜はカルシウムの宝庫！100gあたりのカルシウム量は牛乳を上回ります。',
         en: 'About 129g — komatsuna is a calcium powerhouse! It actually contains more calcium per 100g than milk.',
       },
+      alternatives: [
+        { name: { ja: '木綿豆腐', en: 'Firm tofu' }, amount: { ja: '約237g', en: '~237g' } },
+      ],
     },
     {
       id: 'q6',
@@ -186,6 +205,9 @@ export const quizData: QuizData = {
         ja: '約237g — 木綿豆腐1丁（300g）の8割弱。麻婆豆腐1人前くらいの量でコップ1杯の牛乳と同じカルシウムが摂れます。',
         en: "About 237g — less than one standard block of tofu. A single serving of mapo tofu gives you as much calcium as a glass of milk.",
       },
+      alternatives: [
+        { name: { ja: '小松菜', en: 'Komatsuna' }, amount: { ja: '約129g', en: '~129g' } },
+      ],
     },
     {
       id: 'q7',

@@ -85,6 +85,22 @@ export function ResultScreen({ t, lang, record, correctAnswer, onNext }: Props) 
           />
         )}
 
+        {/* Alternative plant foods */}
+        {'alternatives' in question && question.alternatives && question.alternatives.length > 0 && (
+          <div className="mt-4 rounded-xl bg-white p-4 shadow-sm">
+            <p className="mb-2 text-sm font-bold text-gray-600">{t.result.alternativesTitle}</p>
+            <ul className="space-y-1">
+              {question.alternatives.map((alt, i) => (
+                <li key={i} className="flex items-center gap-2 text-sm text-gray-600">
+                  <span className="text-primary">&#8226;</span>
+                  <span>{alt.name[lang]}</span>
+                  <span className="ml-auto font-semibold tabular-nums">{alt.amount[lang]}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {/* Daily reference */}
         <DailyReferenceCard t={t} lang={lang} category={question.category} />
       </div>

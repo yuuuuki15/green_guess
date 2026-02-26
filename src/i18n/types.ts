@@ -16,6 +16,7 @@ export interface Translations {
     correct: string;
     incorrect: string;
     answerLabel: string;
+    alternativesTitle: string;
   };
   knowledge: {
     yes: string;
@@ -27,6 +28,7 @@ export interface Translations {
     accuracyRate: string;
     tryAgain: string;
     reviewTitle: string;
+    yourAnswer: string;
   };
   reference: {
     title: string;

@@ -18,6 +18,7 @@ export const en: Translations = {
     correct: 'Correct!',
     incorrect: 'The answer was {answer}',
     answerLabel: 'Answer',
+    alternativesTitle: 'With other plant foods?',
   },
   knowledge: {
     yes: 'Yes',
@@ -29,6 +30,7 @@ export const en: Translations = {
     accuracyRate: 'Accuracy: {rate}%',
     tryAgain: 'Try Again',
     reviewTitle: 'Review',
+    yourAnswer: 'Your answer',
   },
   reference: {
     title: 'Daily Recommended Intake (30–49 yrs)',

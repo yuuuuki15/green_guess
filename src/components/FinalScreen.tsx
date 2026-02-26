@@ -59,6 +59,7 @@ export function FinalScreen({
             {answers.map((record, i) => (
               <ReviewItem
                 key={i}
+                t={t}
                 record={record}
                 lang={lang}
                 index={i + 1}
@@ -85,16 +86,18 @@ export function FinalScreen({
 }
 
 function ReviewItem({
+  t,
   record,
   lang,
   index,
 }: {
+  t: Translations;
   record: AnswerRecord;
   lang: Language;
   index: number;
 }) {
   const [open, setOpen] = useState(false);
-  const { question, result } = record;
+  const { question, userAnswer, result } = record;
 
   const badge =
     result === 'correct'
@@ -102,6 +105,17 @@ function ReviewItem({
       : result === 'knowledge'
         ? { text: 'i', cls: 'bg-blue-100 text-blue-600' }
         : { text: '&#10007;', cls: 'bg-red-50 text-red-500' };
+
+  // Format user answer for display
+  let userAnswerDisplay = '';
+  if (question.answer_type === 'special_knowledge') {
+    const key = userAnswer as 'yes' | 'no' | 'notSure';
+    userAnswerDisplay = t.knowledge[key] ?? String(userAnswer);
+  } else if (question.answer_type === 'sheets') {
+    userAnswerDisplay = `${userAnswer}${question.slider_label![lang]}`;
+  } else {
+    userAnswerDisplay = `${userAnswer}g`;
+  }
 
   return (
     <div className="overflow-hidden rounded-xl bg-white shadow-sm">
@@ -122,14 +136,16 @@ function ReviewItem({
           &#9660;
         </span>
       </button>
-      {open && question.answer_type !== 'special_knowledge' && (
+      {open && (
         <div className="animate-fade-in border-t border-gray-100 px-3 pb-3 pt-2 text-sm text-gray-600">
-          {question.comment[lang]}
-        </div>
-      )}
-      {open && question.answer_type === 'special_knowledge' && (
-        <div className="animate-fade-in border-t border-gray-100 px-3 pb-3 pt-2 text-sm text-gray-600">
-          {question.content[lang]}
+          {question.answer_type !== 'special_knowledge' && (
+            <p className="mb-1 text-xs text-gray-400">
+              {t.final.yourAnswer}: <span className="font-semibold text-gray-600">{userAnswerDisplay}</span>
+            </p>
+          )}
+          {question.answer_type === 'special_knowledge'
+            ? question.content[lang]
+            : question.comment[lang]}
         </div>
       )}
     </div>

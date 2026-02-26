@@ -18,6 +18,7 @@ export const ja: Translations = {
     correct: '正解！',
     incorrect: '正解は {answer} でした',
     answerLabel: '正解',
+    alternativesTitle: '他の植物性食品では？',
   },
   knowledge: {
     yes: 'はい',
@@ -29,6 +30,7 @@ export const ja: Translations = {
     accuracyRate: '正答率 {rate}%',
     tryAgain: 'もう一度挑戦',
     reviewTitle: '振り返り',
+    yourAnswer: 'あなたの回答',
   },
   reference: {
     title: '1日の推奨量（30〜49歳）',

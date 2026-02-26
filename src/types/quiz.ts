@@ -27,6 +27,11 @@ export interface PlantFood {
   nutrient_per_sheet?: number;
 }
 
+export interface AlternativeFood {
+  name: LocalizedText;
+  amount: LocalizedText;
+}
+
 export interface SliderQuestion {
   id: string;
   category: string;
@@ -41,6 +46,7 @@ export interface SliderQuestion {
   tolerance: number;
   comment: LocalizedText;
   answer_sheets?: number;
+  alternatives?: AlternativeFood[];
 }
 
 export interface SheetQuestion {
