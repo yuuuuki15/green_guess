@@ -37,7 +37,7 @@ export const en: Translations = {
     source: 'Dietary Reference Intakes for Japanese (2025)',
   },
   footer: {
-    source: 'Data source: Japan Standard Tables of Food Composition (8th Rev.) / USDA FoodData Central',
+    source: 'Data source: Japan Standard Tables of Food Composition (8th Rev.) / Dietary Reference Intakes for Japanese (2025)',
     disclaimer: 'This app is not intended as nutritional advice.',
   },
   category: {
