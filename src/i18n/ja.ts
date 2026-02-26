@@ -30,6 +30,12 @@ export const ja: Translations = {
     tryAgain: 'もう一度挑戦',
     reviewTitle: '振り返り',
   },
+  reference: {
+    title: '1日の推奨量（30〜49歳）',
+    male: '男性',
+    female: '女性',
+    source: '厚生労働省「日本人の食事摂取基準(2025年版)」',
+  },
   footer: {
     source: 'データ出典: 文部科学省「日本食品標準成分表（八訂）増補2023年」',
     disclaimer: 'このアプリは栄養指導を目的としたものではありません。',

@@ -30,6 +30,12 @@ export const en: Translations = {
     tryAgain: 'Try Again',
     reviewTitle: 'Review',
   },
+  reference: {
+    title: 'Daily Recommended Intake (30–49 yrs)',
+    male: 'Male',
+    female: 'Female',
+    source: 'Dietary Reference Intakes for Japanese (2025)',
+  },
   footer: {
     source: 'Data source: Japan Standard Tables of Food Composition (8th Rev.) / USDA FoodData Central',
     disclaimer: 'This app is not intended as nutritional advice.',

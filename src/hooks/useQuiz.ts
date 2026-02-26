@@ -32,7 +32,9 @@ function getResultMessage(score: number, lang: Language): string {
   return quizData.result_messages['4_5_correct'][lang];
 }
 
-/** Generate 4 multiple-choice options (1 correct + 3 distractors). */
+/** Generate 4 multiple-choice options (1 correct + 3 distractors).
+ *  Splits the range into 4 zones and picks one value per zone
+ *  so the choices are well-spread and plausible. */
 export function generateChoices(question: Question): number[] {
   if (question.answer_type === 'special_knowledge') return [];
 
@@ -43,36 +45,45 @@ export function generateChoices(question: Question): number[] {
   const roundToStep = (v: number) => Math.round(v / step) * step;
   const clamp = (v: number) => Math.max(min, Math.min(max, v));
 
-  const choices = new Set<number>([correctAnswer]);
+  const rangeSize = max - min;
+  const zoneSize = rangeSize / 4;
 
-  // Generate distractors using multipliers
-  const multipliers = [0.35, 0.6, 1.5, 2.2, 0.45, 0.75, 1.8, 2.8];
-  for (const m of multipliers) {
-    if (choices.size >= 4) break;
-    const v = clamp(roundToStep(correctAnswer * m));
-    if (v !== correctAnswer && !choices.has(v)) {
-      choices.add(v);
+  // Which zone does the correct answer fall in? (0-3)
+  const correctZone = Math.min(3, Math.floor((correctAnswer - min) / zoneSize));
+
+  const choices: number[] = [correctAnswer];
+
+  for (let z = 0; z < 4; z++) {
+    if (z === correctZone) continue;
+
+    const zoneMin = min + z * zoneSize;
+    const zoneMax = min + (z + 1) * zoneSize;
+    const stepsInZone = Math.max(1, Math.floor((zoneMax - zoneMin) / step));
+    const randomSteps = Math.floor(Math.random() * stepsInZone);
+    const v = clamp(roundToStep(zoneMin + randomSteps * step));
+
+    if (v !== correctAnswer && !choices.includes(v)) {
+      choices.push(v);
     }
   }
 
-  // Fallback: evenly spaced values across the range
-  if (choices.size < 4) {
-    const spacing = Math.floor((max - min) / 5);
-    for (let i = 1; i <= 4 && choices.size < 4; i++) {
-      const v = clamp(roundToStep(min + spacing * i));
-      if (v !== correctAnswer && !choices.has(v)) {
-        choices.add(v);
-      }
+  // Fallback: fill with random values if zones produced duplicates
+  let attempts = 0;
+  while (choices.length < 4 && attempts < 50) {
+    const totalSteps = Math.floor(rangeSize / step);
+    const v = min + Math.floor(Math.random() * totalSteps) * step;
+    if (!choices.includes(v)) {
+      choices.push(v);
     }
+    attempts++;
   }
 
   // Shuffle using Fisher-Yates
-  const arr = [...choices];
-  for (let i = arr.length - 1; i > 0; i--) {
+  for (let i = choices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+    [choices[i], choices[j]] = [choices[j], choices[i]];
   }
-  return arr;
+  return choices;
 }
 
 export function useQuiz() {

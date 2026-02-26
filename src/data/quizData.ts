@@ -264,4 +264,26 @@ export const quizData: QuizData = {
       en: 'Impressive! You clearly know your plant-based nutrition. Ready to give it a try?',
     },
   },
+  daily_reference: {
+    protein: {
+      nutrient: { ja: 'タンパク質', en: 'Protein' },
+      male: '65g',
+      female: { ja: '50g', en: '50g' },
+    },
+    iron: {
+      nutrient: { ja: '鉄', en: 'Iron' },
+      male: '7.5mg',
+      female: { ja: '6.0〜10.5mg（月経の有無による）', en: '6.0–10.5mg (varies with menstruation)' },
+    },
+    calcium: {
+      nutrient: { ja: 'カルシウム', en: 'Calcium' },
+      male: '750mg',
+      female: { ja: '650mg', en: '650mg' },
+    },
+    vitamin_b12: {
+      nutrient: { ja: 'ビタミンB12', en: 'Vitamin B12' },
+      male: '4.0μg',
+      female: { ja: '4.0μg', en: '4.0μg' },
+    },
+  },
 };

@@ -28,6 +28,12 @@ export interface Translations {
     tryAgain: string;
     reviewTitle: string;
   };
+  reference: {
+    title: string;
+    male: string;
+    female: string;
+    source: string;
+  };
   footer: {
     source: string;
     disclaimer: string;

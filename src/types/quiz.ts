@@ -71,6 +71,12 @@ export interface KnowledgeQuestion {
 
 export type Question = SliderQuestion | SheetQuestion | KnowledgeQuestion;
 
+export interface DailyReference {
+  nutrient: LocalizedText;
+  male: string;
+  female: LocalizedText;
+}
+
 export interface QuizConfig {
   questions_per_session: number;
   selection_rule: string;
@@ -95,6 +101,7 @@ export interface QuizData {
   questions: Question[];
   quiz_config: QuizConfig;
   result_messages: ResultMessages;
+  daily_reference: Record<string, DailyReference>;
 }
 
 export type JudgeResult = 'correct' | 'incorrect';
