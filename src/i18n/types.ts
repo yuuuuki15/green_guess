@@ -8,14 +8,12 @@ export interface Translations {
   };
   quiz: {
     progress: string;
-    submitButton: string;
     nextButton: string;
-    sliderUnit: string;
-    sheetsUnit: string;
+    unit_g: string;
+    unit_sheets: string;
   };
   result: {
     correct: string;
-    close: string;
     incorrect: string;
     answerLabel: string;
   };
@@ -26,6 +24,7 @@ export interface Translations {
   };
   final: {
     scoreLabel: string;
+    accuracyRate: string;
     tryAgain: string;
     reviewTitle: string;
   };

@@ -21,11 +21,14 @@ export function FinalScreen({
   answers,
   onRestart,
 }: Props) {
+  const accuracyRate =
+    scorableCount > 0 ? Math.round((score / scorableCount) * 100) : 0;
+
   return (
     <div className="animate-fade-slide flex flex-1 flex-col px-6 py-6">
       <div className="flex-1">
         {/* Score */}
-        <div className="animate-bounce-in mb-6 text-center">
+        <div className="animate-bounce-in mb-2 text-center">
           <p className="tabular-nums text-5xl font-extrabold text-primary">
             {score}
             <span className="text-2xl text-gray-400"> / {scorableCount}</span>
@@ -35,6 +38,13 @@ export function FinalScreen({
               .replace('{score}', String(score))
               .replace('{total}', String(scorableCount))}
           </p>
+        </div>
+
+        {/* Accuracy rate */}
+        <div className="mb-6 text-center">
+          <span className="inline-block rounded-full bg-primary/10 px-4 py-1 text-lg font-bold tabular-nums text-primary">
+            {t.final.accuracyRate.replace('{rate}', String(accuracyRate))}
+          </span>
         </div>
 
         {/* Result message */}
@@ -89,11 +99,9 @@ function ReviewItem({
   const badge =
     result === 'correct'
       ? { text: '&#10003;', cls: 'bg-green-100 text-primary' }
-      : result === 'close'
-        ? { text: '~', cls: 'bg-yellow-100 text-accent' }
-        : result === 'knowledge'
-          ? { text: 'i', cls: 'bg-blue-100 text-blue-600' }
-          : { text: '&#10007;', cls: 'bg-gray-100 text-gray-500' };
+      : result === 'knowledge'
+        ? { text: 'i', cls: 'bg-blue-100 text-blue-600' }
+        : { text: '&#10007;', cls: 'bg-red-50 text-red-500' };
 
   return (
     <div className="overflow-hidden rounded-xl bg-white shadow-sm">

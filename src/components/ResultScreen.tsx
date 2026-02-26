@@ -48,16 +48,9 @@ export function ResultScreen({ t, lang, record, correctAnswer, onNext }: Props) 
               </span>
             </div>
           )}
-          {result === 'close' && (
-            <div className="inline-flex items-center gap-2 rounded-full bg-accent-light px-6 py-3">
-              <span className="text-3xl">&#9888;</span>
-              <span className="text-xl font-bold text-accent">
-                {t.result.close}
-              </span>
-            </div>
-          )}
           {result === 'incorrect' && (
-            <div className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-6 py-3">
+            <div className="inline-flex items-center gap-2 rounded-full bg-red-50 px-6 py-3">
+              <span className="text-3xl">&#10007;</span>
               <span className="text-xl font-bold text-gray-600">
                 {t.result.incorrect.replace('{answer}', answerDisplay)}
               </span>

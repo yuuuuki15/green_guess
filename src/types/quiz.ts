@@ -97,7 +97,7 @@ export interface QuizData {
   result_messages: ResultMessages;
 }
 
-export type JudgeResult = 'correct' | 'close' | 'incorrect';
+export type JudgeResult = 'correct' | 'incorrect';
 
 export interface AnswerRecord {
   question: Question;

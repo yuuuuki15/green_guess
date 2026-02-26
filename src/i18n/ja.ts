@@ -10,14 +10,12 @@ export const ja: Translations = {
   },
   quiz: {
     progress: '{current} / {total}',
-    submitButton: '回答する',
     nextButton: '次の問題へ',
-    sliderUnit: 'g',
-    sheetsUnit: '枚',
+    unit_g: 'g',
+    unit_sheets: '枚',
   },
   result: {
-    correct: 'すごい！',
-    close: '惜しい！',
+    correct: '正解！',
     incorrect: '正解は {answer} でした',
     answerLabel: '正解',
   },
@@ -28,6 +26,7 @@ export const ja: Translations = {
   },
   final: {
     scoreLabel: '{score} / {total} 問正解',
+    accuracyRate: '正答率 {rate}%',
     tryAgain: 'もう一度挑戦',
     reviewTitle: '振り返り',
   },

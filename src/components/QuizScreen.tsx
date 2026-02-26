@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import type { Translations } from '../i18n/types';
 import type { Language, Question } from '../types/quiz';
+import { generateChoices } from '../hooks/useQuiz';
 import { ProgressBar } from './ProgressBar';
-import { Slider } from './Slider';
 
 interface Props {
   t: Translations;
@@ -40,7 +40,7 @@ export function QuizScreen({
   }
 
   return (
-    <SliderQuizScreen
+    <ChoiceQuizScreen
       t={t}
       lang={lang}
       question={question}
@@ -52,7 +52,7 @@ export function QuizScreen({
   );
 }
 
-function SliderQuizScreen({
+function ChoiceQuizScreen({
   t,
   lang,
   question,
@@ -61,14 +61,12 @@ function SliderQuizScreen({
   categoryLabel,
   onSubmit,
 }: Props & { categoryLabel: string }) {
-  const range = question.slider_range!;
-  const defaultValue = Math.round((range.min + range.max) / 2 / range.step) * range.step;
-  const [value, setValue] = useState(defaultValue);
+  const choices = useMemo(() => generateChoices(question), [question]);
 
   const unit =
     question.answer_type === 'sheets'
-      ? question.slider_label![lang]
-      : t.quiz.sliderUnit;
+      ? t.quiz.unit_sheets
+      : t.quiz.unit_g;
 
   return (
     <div className="animate-fade-slide flex flex-1 flex-col px-6 py-6">
@@ -82,23 +80,18 @@ function SliderQuizScreen({
         <p className="text-lg leading-relaxed font-medium">{question.question[lang]}</p>
       </div>
 
-      <div className="flex-1">
-        <Slider
-          min={range.min}
-          max={range.max}
-          step={range.step}
-          value={value}
-          onChange={setValue}
-          unit={unit}
-        />
+      <div className="flex flex-1 flex-col justify-center gap-3">
+        {choices.map((value) => (
+          <button
+            key={value}
+            onClick={() => onSubmit(value)}
+            className="w-full rounded-2xl border-2 border-primary/20 bg-white py-4 text-xl font-bold text-text tabular-nums transition-all hover:border-primary hover:bg-green-50 active:scale-[0.98]"
+          >
+            {value}
+            <span className="ml-1 text-base font-medium text-gray-500">{unit}</span>
+          </button>
+        ))}
       </div>
-
-      <button
-        onClick={() => onSubmit(value)}
-        className="w-full rounded-2xl bg-primary py-4 text-lg font-bold text-white shadow-md transition-all hover:bg-primary-dark active:scale-[0.98]"
-      >
-        {t.quiz.submitButton}
-      </button>
     </div>
   );
 }

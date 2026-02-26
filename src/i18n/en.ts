@@ -10,14 +10,12 @@ export const en: Translations = {
   },
   quiz: {
     progress: '{current} / {total}',
-    submitButton: 'Submit',
     nextButton: 'Next',
-    sliderUnit: 'g',
-    sheetsUnit: 'sheets',
+    unit_g: 'g',
+    unit_sheets: 'sheets',
   },
   result: {
-    correct: 'Great!',
-    close: 'Close!',
+    correct: 'Correct!',
     incorrect: 'The answer was {answer}',
     answerLabel: 'Answer',
   },
@@ -28,6 +26,7 @@ export const en: Translations = {
   },
   final: {
     scoreLabel: '{score} / {total} correct',
+    accuracyRate: 'Accuracy: {rate}%',
     tryAgain: 'Try Again',
     reviewTitle: 'Review',
   },
